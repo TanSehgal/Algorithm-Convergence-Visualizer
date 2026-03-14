@@ -1,0 +1,345 @@
+:root {
+    --bg: #08111f;
+    --bg-soft: #101c30;
+    --card: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --text: #e8f0ff;
+    --muted: #a9bad9;
+    --accent: #63b3ff;
+    --accent-2: #7cf3d2;
+    --danger: #ff7a7a;
+    --success: #7cf3d2;
+    --warning: #ffd37a;
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    --radius: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(99, 179, 255, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(124, 243, 210, 0.14), transparent 25%),
+        linear-gradient(135deg, #07101d 0%, #0b1730 45%, #101b33 100%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.page-shell {
+    width: min(1400px, 94vw);
+    margin: 22px auto;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 22px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+}
+
+.sidebar {
+    padding: 24px;
+    position: sticky;
+    top: 22px;
+    align-self: start;
+}
+
+.brand {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.brand-badge {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #08223f;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.15;
+}
+
+.brand p {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.form-grid,
+.dynamic-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.field,
+.dynamic-inputs .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field.full,
+.dynamic-inputs .field.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+input,
+select {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(5, 12, 24, 0.7);
+    color: var(--text);
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 15px;
+    outline: none;
+}
+
+input::placeholder {
+    color: #7e90b3;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(99, 179, 255, 0.15);
+}
+
+button {
+    border: none;
+    border-radius: 16px;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #071420;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 12px 30px rgba(71, 167, 255, 0.25);
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+.examples {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.examples h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.examples p,
+.examples li {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.examples code {
+    color: var(--warning);
+}
+
+.main-content {
+    display: grid;
+    gap: 22px;
+}
+
+.hero {
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: center;
+}
+
+.hero h2 {
+    margin: 10px 0 8px;
+    font-size: 30px;
+    line-height: 1.15;
+}
+
+.hero p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 720px;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(99, 179, 255, 0.12);
+    color: #b9dcff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hero-metrics {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.metric {
+    min-width: 110px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.metric span {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.metric strong {
+    font-size: 22px;
+}
+
+.result-card,
+.main-content > .card {
+    padding: 22px 24px;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.section-head h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.status {
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.status.idle {
+    background: rgba(255, 211, 122, 0.15);
+    color: var(--warning);
+}
+
+.status.success {
+    background: rgba(124, 243, 210, 0.15);
+    color: var(--success);
+}
+
+.status.error {
+    background: rgba(255, 122, 122, 0.15);
+    color: var(--danger);
+}
+
+.result-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddf2ff;
+}
+
+#plot {
+    width: 100%;
+    min-height: 420px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(5, 11, 22, 0.55);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+}
+
+th {
+    background: rgba(99, 179, 255, 0.16);
+    color: #d7ebff;
+    font-size: 14px;
+}
+
+td {
+    color: #dce8ff;
+    font-size: 14px;
+}
+
+tr:hover td {
+    background: rgba(255,255,255,0.03);
+}
+
+@media (max-width: 1100px) {
+    .page-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 700px) {
+    .form-grid,
+    .dynamic-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+}

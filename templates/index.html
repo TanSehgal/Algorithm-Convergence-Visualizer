@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Convergence Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+    <div class="page-shell">
+        <aside class="sidebar card">
+            <div class="brand">
+                <div class="brand-badge">NM</div>
+                <div>
+                    <h1>Algorithm Convergence Visualizer</h1>
+                    <p>Interactive numerical methods lab project</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="field full">
+                    <label for="method">Method</label>
+                    <select id="method" onchange="updateInputs()">
+                        <option value="bisection">Bisection Method</option>
+                        <option value="regula_falsi">Regula-Falsi Method</option>
+                        <option value="newton">Newton-Raphson Method</option>
+                        <option value="secant">Secant Method</option>
+                        <option value="fixed_point">Fixed Point Iteration</option>
+                    </select>
+                </div>
+
+                <div class="field full" id="fxField">
+                    <label for="function">Function f(x)</label>
+                    <input type="text" id="function" placeholder="Example: x**3 - x - 2" value="x**3 - x - 2">
+                </div>
+
+                <div id="dynamicInputs" class="dynamic-inputs"></div>
+
+                <div class="field">
+                    <label for="tolerance">Tolerance</label>
+                    <input type="number" id="tolerance" value="0.000001" step="any">
+                </div>
+
+                <div class="field">
+                    <label for="max_iter">Max Iterations</label>
+                    <input type="number" id="max_iter" value="20" min="1">
+                </div>
+
+                <div class="field full">
+                    <button onclick="solveMethod()">Visualize Convergence</button>
+                </div>
+            </div>
+
+            <div class="examples">
+                <h3>Quick Example</h3>
+                <p>Try <code>x**3 - x - 2</code> with:</p>
+                <ul>
+                    <li>Bisection / Regula-Falsi: a = 1, b = 2</li>
+                    <li>Newton-Raphson: x₀ = 1.5</li>
+                    <li>Secant: x₀ = 1, x₁ = 2</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section class="hero card">
+                <div>
+                    <span class="pill">UNIT 1 Project</span>
+                    <h2>Visualize how root-finding algorithms converge step by step</h2>
+                    <p>See iteration tables, approximation values, and error reduction on the graph.</p>
+                </div>
+                <div class="hero-metrics">
+                    <div class="metric">
+                        <span>Methods</span>
+                        <strong>5</strong>
+                    </div>
+                    <div class="metric">
+                        <span>Charts</span>
+                        <strong>Live</strong>
+                    </div>
+                    <div class="metric">
+                        <span>Output</span>
+                        <strong>Instant</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card result-card">
+                <div class="section-head">
+                    <h3>Result</h3>
+                    <span id="statusBadge" class="status idle">Ready</span>
+                </div>
+                <div id="result" class="result-text">Run a method to see the approximate root here.</div>
+            </section>
+
+            <section class="card">
+                <div class="section-head">
+                    <h3>Convergence Graph</h3>
+                </div>
+                <div id="plot"></div>
+            </section>
+
+            <section class="card">
+                <div class="section-head">
+                    <h3>Iteration Table</h3>
+                </div>
+                <div id="tableContainer" class="table-wrap"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
